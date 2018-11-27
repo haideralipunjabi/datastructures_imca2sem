@@ -1,5 +1,5 @@
 /*
-    Title: Queue Implementation using Arrays
+    Title: Circular Queue Implementation using Arrays
     Author: Haider Ali Punjabi
     EMail: haideralipunjabi@hackesta.org
     Date: 14/11/2018
@@ -43,7 +43,7 @@ int main()
 }
 
 void enqueue(int item){
-    if(rear == max || rear == front - 1){
+    if((front == 0 && rear == max) || rear == front - 1){
         // Stack Overflow
         printf("Stack Overflow!");
         return;
@@ -53,7 +53,7 @@ void enqueue(int item){
         rear++;
         front++;
     }
-    else if(front != 0 && rear == max){
+    else if(rear == max){
         rear = 0;
     }
     else {
@@ -65,9 +65,21 @@ void enqueue(int item){
 }
 
 void dequeue(){
-
+    if(rear == -1 && front == -1){
+         printf("Stack Underflow!");
+        return;
+    }
+    else if(front == rear){
+        front  = -1;
+        rear = -1;
+    }
+    else if(front == max){
+        front = 0;
+    }
+    else{
+        front++;
+    }
 }
-
 void display(){
     int i = front;
     while(i != rear){
@@ -79,8 +91,8 @@ void display(){
         else{
             i++;
         }
-        if(i==rear){
+    }
+    if(i==rear){
             printf("%d | ", Q[i]);
-        }
     }
 }

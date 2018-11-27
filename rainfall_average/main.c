@@ -22,7 +22,7 @@ int main()
     int ch,year,month;
     while(1){
         system("cls");
-        printf("1. Populate Random Data\n2. Display Data\n3. Average Rainfall of each year\n4. Average Rainfall of each month\n5. Highest Rainfall among years\n6. Lowest Rainfall among years\n7. Highest Rainfall among months\n8. Lowest Rainfall among months\n9. Exit\n");
+        printf("1. Populate Random Data Data\n2. Display Data\n3. Average Rainfall of each year\n4. Average Rainfall of each month\n5. Highest Rainfall among years\n6. Lowest Rainfall among years\n7. Highest Rainfall among months\n8. Lowest Rainfall among months\n9. Exit\n");
         printf("Enter Option: ");
         scanf("%d", &ch);
         switch(ch){
@@ -74,9 +74,9 @@ void populate(){
     int i,j;
     for(i=0;i<YEARS;i++){
         for(j=0;j<MONTHS;j++){
-           // printf("Insert Avg. Rainfall for Year %d, Month %d: ", i+1,j+1);
-           // scanf("%f",&Rainfall[i][j]);
-           Rainfall[i][j] = rand() % MAX;
+           //printf("Insert Avg. Rainfall for Year %d, Month %d: ", i+1,j+1);
+           //scanf("%f",&Rainfall[i][j]);
+           Rainfall[i][j] = rand() % MAX
         }
     }
 }
