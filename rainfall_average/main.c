@@ -8,17 +8,18 @@
 #include <stdlib.h>
 #include <time.h>
 #include <limits.h>
-
+// Macros
 #define MONTHS 12
 #define YEARS 10
 #define MAX 100;
 #define MIN 0;
+// Global Declaration
 float Rainfall[YEARS][MONTHS];
 float AvgYears[YEARS];
 float AvgMonths[MONTHS];
 int main()
 {
-    srand(time(NULL));
+    srand(time(NULL));      // Used to define starting point for rand() used in populate(), time(NULL) returns current time
     int ch,year,month;
     while(1){
         system("cls");
@@ -26,7 +27,7 @@ int main()
         printf("Enter Option: ");
         scanf("%d", &ch);
         switch(ch){
-        case 1: // Enter Data
+        case 1:
             populate();
             processData();
             break;
@@ -74,9 +75,10 @@ void populate(){
     int i,j;
     for(i=0;i<YEARS;i++){
         for(j=0;j<MONTHS;j++){
+           // Uncomment the following two lines, and comment the third to Insert data manually 
            //printf("Insert Avg. Rainfall for Year %d, Month %d: ", i+1,j+1);
            //scanf("%f",&Rainfall[i][j]);
-           Rainfall[i][j] = rand() % MAX
+           Rainfall[i][j] = rand() % MAX    // Populate with random data
         }
     }
 }
