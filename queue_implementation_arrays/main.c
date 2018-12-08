@@ -66,7 +66,7 @@ void enqueue(int item){
 
 void dequeue(){
     if(rear == -1 && front == -1){
-         printf("Stack Underflow!");
+        printf("Stack Underflow!");
         return;
     }
     else if(front == rear){
@@ -84,7 +84,6 @@ void display(){
     int i = front;
     while(i != rear){
         printf("%d | ", Q[i]);
-
         if(i == max){
             i =0;
         }
