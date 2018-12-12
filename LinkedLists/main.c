@@ -20,7 +20,7 @@ int main()
     int ch,temp;
     while(1){
         system("cls");
-        printf("1.Display\n2.Add Data\n3.Delete\n4.Exit\n");
+        printf("1.Display\n2.Add Data\n3.Delete By Data\n4.Delete By Pos\n5.Search by Data\n6.Search By Pos\n7.Exit\n");
         printf("Enter Option: ");
         scanf("%d", &ch);
         switch(ch){
@@ -33,9 +33,36 @@ int main()
             addnode(temp);
             break;
         case 3:
-            deletenode();
+            printf("Enter Data to Delete: ");
+            scanf("%d", &temp);
+            deletebydata(temp);
             break;
         case 4:
+            printf("Enter Position to Delete: ");
+            scanf("%d", &temp);
+            deletebypos(temp);
+            break;
+        case 5:
+            printf("Enter Data to Search: ");
+            scanf("%d", &temp);
+            temp = searchbydata(temp);
+            if(temp == -1)
+                printf("Data Not Found");
+            else
+                printf("Data Found at Position %d",temp);
+            getch();
+            break;
+        case 6:
+            printf("Enter Position to Search: ");
+            scanf("%d", &temp);
+            temp = searchbypos(temp);
+            if(temp == NULL)
+                printf("Position Not Found");
+            else
+                printf("Position Found with Data= %d",temp);
+            getch();
+            break;
+        case 7:
             exit(0);
             break;
         default:
@@ -47,8 +74,7 @@ int main()
 }
 
 
-void addnode(int d,int pos){
-    printf("%d",pos);
+void addnode(int d){
     node *iter, *temp;
     temp = (node *)malloc(sizeof(node));
     temp->data = d;
@@ -64,18 +90,74 @@ void addnode(int d,int pos){
     iter->next = temp;
 }
 
-void deletenode(){
+void deletebydata(int d){
     node* iter = HEAD;
-    node *temp;
-    while(iter->next != NULL){
-        temp=iter->next;
-        if(temp->next == NULL){
-            iter->next = NULL;
+    node* prev;
+    while(iter != NULL){
+        if(iter->data == d){
+            if(iter == HEAD){
+                HEAD = iter->next;
+
+            }
+            else{
+                prev->next = iter->next;
+            }
+            printf("Data Deleted");
+            getch();
             return;
         }
-        iter = temp;
+        prev = iter;
+        iter = iter->next;
     }
-    HEAD = NULL;
+
+}
+void deletebypos(int p){
+    node* iter = HEAD;
+    node* prev;
+    int pos = 0;
+    while(iter != NULL){
+        if(pos == p){
+            if(iter == HEAD){
+                HEAD = iter->next;
+
+            }
+            else{
+                prev->next = iter->next;
+            }
+            printf("Data Deleted");
+            getch();
+            return;
+        }
+        pos++;
+        prev = iter;
+        iter = iter->next;
+    }
+}
+
+int searchbydata(int d){
+    node* iter = HEAD;
+    int pos = 0;
+    while(iter != NULL){
+        if(iter->data == d){
+            return pos;
+        }
+        pos++;
+        iter = iter->next;
+    }
+    return -1;
+}
+
+int searchbypos(int p){
+    node* iter = HEAD;
+    int pos = 0;
+    while(iter != NULL){
+        if(pos == p){
+            return iter->data;
+        }
+        pos++;
+        iter = iter->next;
+    }
+    return NULL;
 }
 
 void display(){
