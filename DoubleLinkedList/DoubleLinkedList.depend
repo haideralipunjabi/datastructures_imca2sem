@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1544858884 source:c:\users\bca\documents\codeblocks\imca2sem\doublelinkedlist\main.c
+	<stdio.h>
+	<stdlib.h>
+
